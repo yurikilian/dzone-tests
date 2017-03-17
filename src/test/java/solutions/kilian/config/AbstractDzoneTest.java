@@ -1,8 +1,10 @@
-package solutions.kilian;
+package solutions.kilian.config;
 
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+
+import solutions.kilian.WebDriverFactory;
 
 public class AbstractDzoneTest {
 

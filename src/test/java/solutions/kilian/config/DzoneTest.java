@@ -1,10 +1,12 @@
-package solutions.kilian;
+package solutions.kilian.config;
 
 
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+
+import solutions.kilian.config.AbstractDzoneTest;
 
 public class DzoneTest extends AbstractDzoneTest {
 
