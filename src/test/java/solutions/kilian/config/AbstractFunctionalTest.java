@@ -4,9 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 
-import solutions.kilian.WebDriverFactory;
-
-public class AbstractDzoneTest {
+public class AbstractFunctionalTest {
 
   protected WebDriver driver;
 
@@ -18,7 +16,7 @@ public class AbstractDzoneTest {
 
   @After
   public void tearDown() throws Exception {
-    driver.quit();
+    // driver.quit();
   }
 
 }

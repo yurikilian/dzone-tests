@@ -1,4 +1,4 @@
-package solutions.kilian;
+package solutions.kilian.config;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
