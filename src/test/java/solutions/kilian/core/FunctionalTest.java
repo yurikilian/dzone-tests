@@ -11,17 +11,16 @@ public class FunctionalTest {
 
   @Before
   public void setUp() throws Exception {
-    String webdriver = System.getenv("WEBDRIVER");
-    driver = WebDriverPool.getDriver(Driver.valueOf(webdriver));
-    this.waitFor(30, TimeUnit.SECONDS);
+    driver = WebDriverPool.getDriver(Driver.valueOf(System.getenv("WEBDRIVER")));
+    this.implicitWait(30, TimeUnit.SECONDS);
+  }
+
+  protected void implicitWait(int units, TimeUnit timeUnit) {
+    driver.manage().timeouts().implicitlyWait(units, timeUnit);
   }
 
   @After
-  public void tearDown() throws Exception {
-    driver.close();
-  }
-
-  protected void waitFor(int units, TimeUnit timeUnit) {
-    driver.manage().timeouts().implicitlyWait(units, timeUnit);
+  public void tearDown() {
+    driver.quit();
   }
 }

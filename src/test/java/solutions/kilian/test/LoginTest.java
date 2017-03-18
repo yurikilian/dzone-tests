@@ -17,13 +17,13 @@ public class LoginTest extends FunctionalTest {
   public void setUp() throws Exception {
     super.setUp();
     homePage = new DzoneHomePage(driver);
-    waitFor(30, TimeUnit.SECONDS);
+    implicitWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void shouldHighlightInputOnLoginError() throws Exception {
     homePage.getLoginButton().click();
-    waitFor(20, TimeUnit.SECONDS);
+    implicitWait(20, TimeUnit.SECONDS);
 
     homePage.gotoLogin();
     homePage.fill(homePage.getLoginUsernameField(), "teste@teste.com.br");
