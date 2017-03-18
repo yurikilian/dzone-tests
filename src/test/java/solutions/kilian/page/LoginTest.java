@@ -1,6 +1,8 @@
 package solutions.kilian.page;
 
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
@@ -29,13 +31,10 @@ public class LoginTest extends AbstractFunctionalTest {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("teste123");
     driver.findElement(By.cssSelector("input.btn.btn-success")).click();
+    WebElement cssClass = driver.findElement(By.className("has-error"));
 
-
-    WebElement parent = usernameField.findElement(By.xpath(".."));
-
-
-    // TODO: descrobrir como compara a css class de form de erro
-    LOGGER.info(parent.getAttribute("class"));
+    LOGGER.info(cssClass.getTagName());
+    assertTrue(cssClass.isDisplayed());
   }
 
 
