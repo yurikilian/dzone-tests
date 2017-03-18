@@ -2,14 +2,13 @@ package solutions.kilian.test;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 
 import solutions.kilian.core.FunctionalTest;
 
 public class RegisterTest extends FunctionalTest {
 
-  @Test
+  // TODO: passar para page objects - @Test
   public void testDzoneRegister() throws Exception {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     driver.get("https://dzone.com");
@@ -17,10 +16,10 @@ public class RegisterTest extends FunctionalTest {
     driver.findElement(By.cssSelector("div.form-group.input-container > input[name=\"email\"]"))
         .clear();
     driver.findElement(By.cssSelector("div.form-group.input-container > input[name=\"email\"]"))
-        .sendKeys("kilian.inf@gmail.com");
+        .sendKeys("sawedeyeya@katztube.com");
     driver.findElement(By.cssSelector("div.form-group > div.button-right > input.btn.btn-success"))
         .click();
-    driver.findElement(By.id("name")).click();
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.findElement(By.id("name")).clear();
     driver.findElement(By.id("name")).sendKeys("Yuri");
     driver.findElement(By.id("lastName")).clear();

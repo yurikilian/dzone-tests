@@ -1,13 +1,12 @@
 package solutions.kilian.test;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 
 import solutions.kilian.core.FunctionalTest;
 
 public class EditProfileTest extends FunctionalTest {
 
-  @Test
+  // TODO: passar para page object - @Test
   public void test() {
     driver.get("http://www.dzone.com/");
     driver.findElement(By.cssSelector("div.user-avatar.ng-isolate-scope > img")).click();

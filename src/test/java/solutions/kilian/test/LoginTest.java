@@ -13,19 +13,30 @@ import solutions.kilian.page.DzoneHomePage;
 public class LoginTest extends FunctionalTest {
   private DzoneHomePage homePage;
 
+  @Override
+  public void setUp() throws Exception {
+    super.setUp();
+    homePage = new DzoneHomePage(driver);
+    waitFor(30, TimeUnit.SECONDS);
+  }
+
   @Test
   public void shouldHighlightInputOnLoginError() throws Exception {
-    homePage = new DzoneHomePage(driver);
     homePage.getLoginButton().click();
-
     waitFor(20, TimeUnit.SECONDS);
 
+    homePage.gotoLogin();
     homePage.fill(homePage.getLoginUsernameField(), "teste@teste.com.br");
     homePage.fill(homePage.getLoginPasswordField(), "teste123");
-
     homePage.getSignInButton().click();
 
-    assertTrue(homePage.getLoginErrorField().isDisplayed());
+    assertTrue(homePage.isLoginErrorDisplayed());
   }
+
+  // @Test
+  // public void shouldDisplayAvatarOnLoginSuccess() {
+  //
+  // }
+
 
 }

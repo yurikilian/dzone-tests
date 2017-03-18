@@ -18,7 +18,7 @@ public class FunctionalTest {
 
   @After
   public void tearDown() throws Exception {
-    driver.quit();
+    driver.close();
   }
 
   protected void waitFor(int units, TimeUnit timeUnit) {
