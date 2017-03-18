@@ -13,10 +13,17 @@ public class EnvironmentTest {
   private Logger LOGGER = LoggerFactory.getLogger(EnvironmentTest.class);
 
   @Test
-  public void environmentVaribleShouldBeSeted() {
+  public void webdriverPathEnvVarShouldBeSeted() {
     Optional<String> webdriverHomeEnv = Optional.fromNullable(System.getenv("WEBDRIVER_BINARY"));
     LOGGER.debug(webdriverHomeEnv.get());
-    assertTrue("Environment variable not present!", webdriverHomeEnv.isPresent());
+    assertTrue("Webdriver Path Environment variable not present!", webdriverHomeEnv.isPresent());
+  }
+
+  @Test
+  public void webdriverEnvVarShouldBeSeted() {
+    Optional<String> webdriver = Optional.fromNullable(System.getenv("WEBDRIVER"));
+    LOGGER.debug(webdriver.get());
+    assertTrue("Webdriver Environment variable not present!", webdriver.isPresent());
   }
 
 

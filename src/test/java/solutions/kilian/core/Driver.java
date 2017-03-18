@@ -1,31 +1,31 @@
-package solutions.kilian.config;
+package solutions.kilian.core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class WebDriverFactory {
-  public WebDriver driver;
-  public String baseUrl;
+public enum Driver {
+  FIREFOX, CHROME;
 
+  public WebDriver get() {
+    switch (this) {
+      case CHROME:
+        return null;
+      case FIREFOX:
+        return configuredFirefoxWebDriver();
+      default:
+        return null;
+    }
+  }
 
-
-  public static WebDriver getDriver() {
-
-    // em comum
+  private WebDriver configuredFirefoxWebDriver() {
     System.setProperty("webdriver.gecko.driver", System.getenv("WEBDRIVER_BINARY"));
-
-    // exclusivo do firefox
     DesiredCapabilities capabilities = DesiredCapabilities.firefox();
     FirefoxOptions options = new FirefoxOptions();
     options.addArguments("--log", "fatal");
     capabilities.setCapability("moz:firefoxOptions", options);
-
-
-    // em comum
     return new FirefoxDriver(capabilities);
   }
-
 
 }

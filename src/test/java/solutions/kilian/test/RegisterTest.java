@@ -1,13 +1,13 @@
-package solutions.kilian.page;
+package solutions.kilian.test;
 
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import solutions.kilian.config.AbstractFunctionalTest;
+import solutions.kilian.core.FunctionalTest;
 
-public class RegisterTest extends AbstractFunctionalTest {
+public class RegisterTest extends FunctionalTest {
 
   @Test
   public void testDzoneRegister() throws Exception {

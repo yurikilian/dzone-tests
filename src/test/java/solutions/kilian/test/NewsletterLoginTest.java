@@ -1,11 +1,11 @@
-package solutions.kilian.page;
+package solutions.kilian.test;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import solutions.kilian.config.AbstractFunctionalTest;
+import solutions.kilian.core.FunctionalTest;
 
-public class NewsletterLoginTest extends AbstractFunctionalTest {
+public class NewsletterLoginTest extends FunctionalTest {
 
   @Test
   public void test() {

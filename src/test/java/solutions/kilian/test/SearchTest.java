@@ -1,4 +1,4 @@
-package solutions.kilian.page;
+package solutions.kilian.test;
 
 import static org.junit.Assert.assertTrue;
 
@@ -10,12 +10,10 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import solutions.kilian.config.AbstractFunctionalTest;
 import solutions.kilian.config.EnvironmentTest;
+import solutions.kilian.core.FunctionalTest;
 
-public class SearchTest extends AbstractFunctionalTest {
-
-
+public class SearchTest extends FunctionalTest {
   private Logger LOGGER = LoggerFactory.getLogger(EnvironmentTest.class);
 
 
