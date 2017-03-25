@@ -1,51 +1,48 @@
 package solutions.kilian.test;
 
-import java.util.concurrent.TimeUnit;
+import java.util.UUID;
 
+import org.junit.Test;
 import org.openqa.selenium.By;
 
 import solutions.kilian.core.FunctionalTest;
+import solutions.kilian.core.tempmail.TempMail;
+import solutions.kilian.page.DzoneHomePage;
+import solutions.kilian.page.DzoneRegisterPage;
 
 public class RegisterTest extends FunctionalTest {
+  private DzoneHomePage homePage;
 
-  // TODO: passar para page objects - @Test
+
+  @Test
   public void testDzoneRegister() throws Exception {
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    driver.get("https://dzone.com");
-    driver.findElement(By.linkText("Sign In / Join")).click();
-    driver.findElement(By.cssSelector("div.form-group.input-container > input[name=\"email\"]"))
-        .clear();
-    driver.findElement(By.cssSelector("div.form-group.input-container > input[name=\"email\"]"))
-        .sendKeys("sawedeyeya@katztube.com");
-    driver.findElement(By.cssSelector("div.form-group > div.button-right > input.btn.btn-success"))
-        .click();
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    driver.findElement(By.id("name")).clear();
-    driver.findElement(By.id("name")).sendKeys("Yuri");
-    driver.findElement(By.id("lastName")).clear();
-    driver.findElement(By.id("lastName")).sendKeys("Kilian");
-    driver.findElement(By.id("username")).clear();
-    driver.findElement(By.id("username")).sendKeys("ykilian");
-    driver.findElement(By.id("password")).clear();
-    driver.findElement(By.id("password")).sendKeys("1020304050");
-    driver.findElement(By.id("confPass")).clear();
-    driver.findElement(By.id("confPass")).sendKeys("1020304050");
-    driver
-        .findElement(By
-            .xpath("//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/div/button"))
-        .click();
-    driver.findElement(By.id("companyName")).clear();
-    driver.findElement(By.id("companyName")).sendKeys("Tivea");
-    driver.findElement(By.id("job")).clear();
-    driver.findElement(By.id("job")).sendKeys("Programador");
-    driver.findElement(By.xpath("//button[@type='button']")).click();
-    driver.findElement(By.id("jobRole")).click();
-    driver.findElement(By.id("dropdownMenu1")).click();
-    driver.findElement(By.linkText("50 to 99")).click();
-    driver
-        .findElement(By
-            .xpath("//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/div/button"))
-        .click();
+
+    String userName = UUID.randomUUID().toString();
+    String emailAddress = TempMail.getEmail(userName);
+
+
+    homePage.getRegisterButton().click();
+    DzoneRegisterPage registerPage = homePage.gotoRegister();
+    registerPage.fill(registerPage.getRegisterEmailField(), emailAddress);
+
+    registerPage.getProceedButton().click();
+    registerPage.gotoDetail();
+    registerPage.fill(registerPage.getNameField(), "Name");
+    registerPage.fill(registerPage.getLastNameField(), "Last Name");
+    registerPage.fill(registerPage.getUsernameField(), userName);
+    registerPage.fill(registerPage.getPasswordField(), "1020304050");
+    registerPage.fill(registerPage.getConfirmPasswordField(), "1020304050");
+
+    registerPage.getContinueButton().click();
+    registerPage.gotoSecondDetail();
+    registerPage.fill(registerPage.getCompanyNameField(), "Organization");
+    registerPage.fill(registerPage.getJobField(), "Developer");
+    registerPage.getJobRoleButton().click();
+    registerPage.getJobRoleDropdown().click();
+    registerPage.getJobRoleOption().click();
+
+    registerPage.getSecondDetailContinueButton().click();
+
     driver.findElement(By.id("address1")).clear();
     driver.findElement(By.id("address1")).sendKeys("Rua Ivo Janson 240");
     driver.findElement(By.xpath("(//input[@type='text'])[4]")).click();

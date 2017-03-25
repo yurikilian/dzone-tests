@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import solutions.kilian.core.Page;
 
 public class DzoneHomePage extends Page {
+  private static final String BASE_URL = "https://dzone.com";
   private WebElement loginButton;
   private WebElement loginUsernameField;
   private WebElement loginPasswordField;
@@ -19,10 +20,11 @@ public class DzoneHomePage extends Page {
   private WebElement searchField;
   private WebElement searchButton;
   private WebElement articleTitle;
+  private WebElement registerButton;
 
 
   public DzoneHomePage(WebDriver webDriver) {
-    super(webDriver, "https://dzone.com");
+    super(webDriver, BASE_URL);
     driver.get(baseUrl);
     registerPageElements();
   }
@@ -33,6 +35,7 @@ public class DzoneHomePage extends Page {
     this.newsletterSubscribeButton = driver.findElement(By.xpath(
         "//html[@id='ng-app']/body/div[3]/div/div/div/div/div/div/div[2]/email-subscriptions-footer-widget/div/div[3]/form/div/span/button"));
     this.searchDropdown = driver.findElement(By.id("dropdownMenu2"));
+    this.registerButton = driver.findElement(By.linkText("Sign In / Join"));
   }
 
   public void gotoLogin() {
@@ -118,5 +121,14 @@ public class DzoneHomePage extends Page {
         .until(ExpectedConditions.visibilityOfElementLocated(this.getFirstSearchLocalization()));
     getFirstSearchResult().click();
   }
+
+  public WebElement getRegisterButton() {
+    return registerButton;
+  }
+
+  public DzoneRegisterPage gotoRegister() {
+    return new DzoneRegisterPage(driver, BASE_URL);
+  }
+
 
 }
