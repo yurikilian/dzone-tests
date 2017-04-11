@@ -1,4 +1,6 @@
 language: java
+jdk:
+  - oraclejdk8
 before_script:
   - mkdir /home/travis/webdriver
   - wget http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
@@ -7,4 +9,12 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 
-script: mvn test -Dwebdriver.chrome.logfile="/dev/null" -Dwebdriver.chrome.args="--disable-logging" 
+script: mvn clean install -DskipTests
+cache:
+  directories:
+  - $HOME/.m2
+sudo: false
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
