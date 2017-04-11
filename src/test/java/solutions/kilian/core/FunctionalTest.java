@@ -2,10 +2,13 @@ package solutions.kilian.core;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 
 public class FunctionalTest {
+
+
   protected WebDriver driver;
 
   @Before
@@ -16,6 +19,12 @@ public class FunctionalTest {
 
   protected void implicitWait(int units, TimeUnit timeUnit) {
     driver.manage().timeouts().implicitlyWait(units, timeUnit);
+  }
+
+
+  @After
+  public void tearDown() throws Exception {
+    // driver.close();
   }
 
 }

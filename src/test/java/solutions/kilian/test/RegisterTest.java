@@ -1,5 +1,7 @@
 package solutions.kilian.test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.UUID;
 
 import org.junit.Test;
@@ -16,16 +18,16 @@ public class RegisterTest extends FunctionalTest {
 
   @Test
   public void testDzoneRegister() throws Exception {
+    homePage = new DzoneHomePage(driver);
+    homePage.getRegisterButton().click();
 
+    DzoneRegisterPage registerPage = homePage.gotoRegister();
     String userName = UUID.randomUUID().toString();
     String emailAddress = TempMail.getEmail(userName);
-
-
-    homePage.getRegisterButton().click();
-    DzoneRegisterPage registerPage = homePage.gotoRegister();
     registerPage.fill(registerPage.getRegisterEmailField(), emailAddress);
-
     registerPage.getProceedButton().click();
+
+
     registerPage.gotoDetail();
     registerPage.fill(registerPage.getNameField(), "Name");
     registerPage.fill(registerPage.getLastNameField(), "Last Name");
@@ -33,37 +35,31 @@ public class RegisterTest extends FunctionalTest {
     registerPage.fill(registerPage.getPasswordField(), "1020304050");
     registerPage.fill(registerPage.getConfirmPasswordField(), "1020304050");
 
+    registerPage.waitUntilContinueButtonEnabled();
     registerPage.getContinueButton().click();
+
     registerPage.gotoSecondDetail();
     registerPage.fill(registerPage.getCompanyNameField(), "Organization");
     registerPage.fill(registerPage.getJobField(), "Developer");
+    registerPage.getJobFieldButton().click();
     registerPage.getJobRoleButton().click();
-    registerPage.getJobRoleDropdown().click();
-    registerPage.getJobRoleOption().click();
-
+    registerPage.getCompanySizeDropdown().click();
+    registerPage.getCompanySizeArrowButton().click();
     registerPage.getSecondDetailContinueButton().click();
 
-    driver.findElement(By.id("address1")).clear();
-    driver.findElement(By.id("address1")).sendKeys("Rua Ivo Janson 240");
-    driver.findElement(By.xpath("(//input[@type='text'])[4]")).click();
-    driver.findElement(By.xpath("(//input[@type='text'])[4]")).clear();
-    driver.findElement(By.xpath("(//input[@type='text'])[4]")).sendKeys("brazil");
-    driver.findElement(By.cssSelector("span.ui-select-highlight")).click();
-    driver.findElement(By.id("city")).clear();
-    driver.findElement(By.id("city")).sendKeys("Porto Alegre");
-    driver.findElement(By.id("zipCode")).clear();
-    driver.findElement(By.id("zipCode")).sendKeys("91530070");
-    driver.findElement(By.id("pNumber")).clear();
-    driver.findElement(By.id("pNumber")).sendKeys("5551995988131");
-    driver
-        .findElement(By
-            .xpath("//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/div/button"))
-        .click();
+    registerPage.gotoThirdDetail();
+    registerPage.fill(registerPage.getAddress1Field(), "Av Wenceslau Escobar");
+    registerPage.getCountrySelectionFieldButton().click();
+    registerPage.fill(registerPage.getCountrySelectionField(), "Brazil");
+    driver.findElement(By.cssSelector("div.ng-binding.ng-scope")).click();
+    registerPage.fill(registerPage.getCitySelectionField(), "Porto Alegre");
+    registerPage.fill(registerPage.getZipCodeField(), "91530070");
+    registerPage.fill(registerPage.getPhoneNumberField(), "5199988735");
+    registerPage.getFinishRegisterButton().click();
 
+    assertTrue(registerPage.isRegisterSuccessDisplayed());
 
-    // validar resultado do teste por:
-
-    // <h2 class="toppancake">Thank you for joining DZone.com! </h2>
+    homePage.logout();
   }
 
 

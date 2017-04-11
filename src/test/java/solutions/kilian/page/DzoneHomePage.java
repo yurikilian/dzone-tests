@@ -21,6 +21,7 @@ public class DzoneHomePage extends Page {
   private WebElement searchButton;
   private WebElement articleTitle;
   private WebElement registerButton;
+  private By welcomeBackUserLocation;
 
 
   public DzoneHomePage(WebDriver webDriver) {
@@ -42,6 +43,7 @@ public class DzoneHomePage extends Page {
     this.loginUsernameField = driver.findElement(By.name("username"));
     this.loginPasswordField = driver.findElement(By.name("password"));
     this.signInButton = driver.findElement(By.cssSelector("input.btn.btn-success"));
+    this.welcomeBackUserLocation = By.className("welcome-back-username");
   }
 
 
@@ -128,6 +130,21 @@ public class DzoneHomePage extends Page {
 
   public DzoneRegisterPage gotoRegister() {
     return new DzoneRegisterPage(driver, BASE_URL);
+  }
+
+  public By getWelcomeBackUserlocation() {
+    return welcomeBackUserLocation;
+  }
+
+  public boolean welcomeBackIsDisplayed() {
+    return driver.findElement(this.getWelcomeBackUserlocation()).isDisplayed();
+  }
+
+  public void logout() throws InterruptedException {
+    driver.findElement(By.cssSelector("span.mobile-visible.welcome-back-username")).click();
+    Thread.sleep(2000);
+    driver.findElement(By.className("sign-out")).click();
+    Thread.sleep(3000);
   }
 
 

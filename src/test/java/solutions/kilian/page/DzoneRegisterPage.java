@@ -24,6 +24,17 @@ public class DzoneRegisterPage extends Page {
   private WebElement jobRoleButton;
   private WebElement jobRoleDropdown;
   private WebElement jobRoleOption;
+  private WebElement dropdownField;
+  private WebElement address1Field;
+  private WebElement countrySelectionField;
+  private WebElement countrySelectionFieldButton;
+  private WebElement citySelectionFieldButton;
+  private WebElement citySelectionField;
+  private WebElement zipCodeField;
+  private WebElement finishRegisterButton;
+  private By continueButtonLocation;
+  private WebElement phoneNumberField;
+  private By jobRoleOptionLocation;
 
   public DzoneRegisterPage(WebDriver webDriver, String baseUrl) {
     super(webDriver, baseUrl);
@@ -48,20 +59,16 @@ public class DzoneRegisterPage extends Page {
     return this.proceedButton;
   }
 
-  private By getNameFieldLocalization() {
-    return By.id("name");
-  }
-
-  public void gotoDetail() {
-    new WebDriverWait(driver, 30)
-        .until(ExpectedConditions.visibilityOfElementLocated(this.getNameFieldLocalization()));
+  public void gotoDetail() throws InterruptedException {
+    Thread.sleep(2000);
     this.nameField = driver.findElement(By.id("name"));
     this.lastNameField = driver.findElement(By.id("lastName"));
     this.usernameField = driver.findElement(By.id("username"));
     this.passwordField = driver.findElement(By.id("password"));
     this.confirmPasswordField = driver.findElement(By.id("confPass"));
-    this.continueButton = driver.findElement(
-        By.xpath("//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/div/button"));
+    this.continueButtonLocation =
+        By.xpath("//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/div/button");
+    this.continueButton = driver.findElement(continueButtonLocation);
   }
 
   public WebElement getNameField() {
@@ -96,14 +103,13 @@ public class DzoneRegisterPage extends Page {
     return jobField;
   }
 
-  public void gotoSecondDetail() {
+  public void gotoSecondDetail() throws InterruptedException {
+    Thread.sleep(3000);
     this.companyNameField = driver.findElement(By.id("companyName"));
     this.jobField = driver.findElement(By.id("job"));
     this.secondDetailContinueButton = driver.findElement(
         By.xpath("//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/div/button"));
-    this.jobRoleButton = driver.findElement(By.id("jobRole"));
-    this.jobRoleDropdown = driver.findElement(By.id("dropdownMenu1"));
-    this.jobRoleOption = driver.findElement(By.linkText("50 to 99"));
+
   }
 
   public WebElement getSecondDetailContinueButton() {
@@ -111,7 +117,7 @@ public class DzoneRegisterPage extends Page {
   }
 
   public WebElement getJobRoleButton() {
-    return jobRoleButton;
+    return driver.findElement(By.id("jobRole"));
   }
 
   public WebElement getJobRoleDropdown() {
@@ -122,6 +128,86 @@ public class DzoneRegisterPage extends Page {
     return this.jobRoleOption;
   }
 
+  public WebElement getDropdownField() {
+    return dropdownField;
+  }
 
+
+
+  public void gotoThirdDetail() throws InterruptedException {
+
+    Thread.sleep(2000);
+    this.address1Field = driver.findElement(By.id("address1"));
+    this.countrySelectionFieldButton = driver.findElement(By.xpath(
+        "//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/form/div[3]/div/div/span"));
+    this.countrySelectionField = driver.findElement(By.xpath("(//input[@type='text'])[4]"));
+    this.citySelectionFieldButton = driver.findElement(By.xpath("//label[@for='city']"));
+    this.citySelectionField = driver.findElement(By.id("city"));
+    this.zipCodeField = driver.findElement(By.id("zipCode"));
+    this.phoneNumberField = driver.findElement(By.id("pNumber"));
+    this.finishRegisterButton = driver.findElement(
+        By.xpath("//html[@id='ng-app']/body/div[2]/div/div[2]/div/div[2]/div/div/div/div/button"));
+  }
+
+  public WebElement getAddress1Field() {
+    return address1Field;
+  }
+
+  public WebElement getCountrySelectionField() {
+    return countrySelectionField;
+  }
+
+  public WebElement getCountrySelectionFieldButton() {
+    return countrySelectionFieldButton;
+  }
+
+  public WebElement getCitySelectionFieldButton() {
+    return citySelectionFieldButton;
+  }
+
+  public WebElement getCitySelectionField() {
+    return citySelectionField;
+  }
+
+  public WebElement getZipCodeField() {
+    return zipCodeField;
+  }
+
+  public WebElement getFinishRegisterButton() {
+    return finishRegisterButton;
+  }
+
+  public boolean isRegisterSuccessDisplayed() {
+    return driver.findElement(By.className("toppancake")).isDisplayed();
+  }
+
+  public By getContinueButtonLocation() {
+    return continueButtonLocation;
+  }
+
+  public void waitUntilContinueButtonEnabled() {
+    new WebDriverWait(driver, 10)
+        .until(ExpectedConditions.elementToBeClickable(getContinueButtonLocation()));
+  }
+
+  public WebElement getPhoneNumberField() {
+    return phoneNumberField;
+  }
+
+  public By getJobRoleOptionLocation() {
+    return jobRoleOptionLocation;
+  }
+
+  public WebElement getJobFieldButton() {
+    return driver.findElement(By.xpath("//button[@type='button']"));
+  }
+
+  public WebElement getCompanySizeDropdown() {
+    return driver.findElement(By.id("dropdownMenu1"));
+  }
+
+  public WebElement getCompanySizeArrowButton() {
+    return driver.findElement(By.id("companySize"));
+  }
 
 }
