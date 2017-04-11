@@ -39,7 +39,7 @@ public class LoginTest extends FunctionalTest {
   }
 
   @Test
-  public void shouldDisplayAvatarOnLoginSuccess() {
+  public void shouldDisplayAvatarOnLoginSuccess() throws Exception {
     homePage.getLoginButton().click();
 
     homePage.gotoLogin();

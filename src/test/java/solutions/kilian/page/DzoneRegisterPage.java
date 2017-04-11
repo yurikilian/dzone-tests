@@ -21,7 +21,6 @@ public class DzoneRegisterPage extends Page {
   private WebElement companyNameField;
   private WebElement jobField;
   private WebElement secondDetailContinueButton;
-  private WebElement jobRoleButton;
   private WebElement jobRoleDropdown;
   private WebElement jobRoleOption;
   private WebElement dropdownField;
