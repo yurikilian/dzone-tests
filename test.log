@@ -1,0 +1,62 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dzone-tests 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ dzone-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ dzone-tests ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ dzone-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:testCompile (default-testCompile) @ dzone-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 15 source files to /home/kilian/workspace/dzone-tests/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ dzone-tests ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running solutions.kilian.config.EnvironmentTest
+19:56:50,621 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback-test.xml] at [file:/home/kilian/workspace/dzone-tests/target/test-classes/logback-test.xml]
+19:56:50,724 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+19:56:50,725 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+19:56:50,730 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+19:56:50,768 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - This appender no longer admits a layout as a sub-component, set an encoder instead.
+19:56:50,768 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - To ensure compatibility, wrapping your layout in LayoutWrappingEncoder.
+19:56:50,768 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - See also http://logback.qos.ch/codes.html#layoutInsteadOfEncoder for details
+19:56:50,768 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to DEBUG
+19:56:50,769 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+19:56:50,769 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+19:56:50,770 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@2db7a79b - Registering current configuration as safe fallback point
+
+19:56:50.777 [main] DEBUG s.kilian.config.EnvironmentTest - CHROME
+19:56:50.779 [main] DEBUG s.kilian.config.EnvironmentTest - /opt/webdriver/chromedriver
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.229 sec - in solutions.kilian.config.EnvironmentTest
+Running solutions.kilian.test.SearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.858 sec - in solutions.kilian.test.SearchTest
+Running solutions.kilian.test.NewsletterLoginTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.403 sec - in solutions.kilian.test.NewsletterLoginTest
+Running solutions.kilian.test.RegisterTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.089 sec - in solutions.kilian.test.RegisterTest
+Running solutions.kilian.test.LoginTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.381 sec - in solutions.kilian.test.LoginTest
+
+Results :
+
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:05 min
+[INFO] Finished at: 2017-04-11T19:57:53-03:00
+[INFO] Final Memory: 22M/257M
+[INFO] ------------------------------------------------------------------------
