@@ -1,5 +1,6 @@
 language: java
-jdk: oraclejdk8
+jdk:
+  - oraclejdk8
 before_script:
   - mkdir /home/travis/webdriver
   - wget http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
