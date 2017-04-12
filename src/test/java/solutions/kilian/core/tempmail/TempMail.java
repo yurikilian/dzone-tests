@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -116,10 +117,10 @@ public class TempMail {
     return EMAIL_LIST;
   }
 
-  public static String getEmail(String name)
+  public static solutions.kilian.core.Email getEmail()
       throws IOException, ParserConfigurationException, SAXException, NoSuchAlgorithmException {
     List<String> domains = TempMail.getDomains();
-    return name + domains.get(0);
+    return new solutions.kilian.core.Email(UUID.randomUUID().toString(), domains.get(0));
 
   }
 

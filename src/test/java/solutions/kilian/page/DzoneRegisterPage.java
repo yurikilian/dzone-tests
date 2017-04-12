@@ -209,4 +209,8 @@ public class DzoneRegisterPage extends Page {
     return driver.findElement(By.id("companySize"));
   }
 
+  public WebElement getCountryExitSpace() {
+    return driver.findElement(By.cssSelector("div.ng-binding.ng-scope"));
+  }
+
 }
